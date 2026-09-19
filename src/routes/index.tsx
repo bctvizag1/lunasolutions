@@ -24,6 +24,7 @@ export const Route = createFileRoute("/")({
 const courses = [
   {
     code: "CC",
+    path: "/courses/networking-ccna" as const,
     title: "Networking & CCNA",
     description: "Build a strong foundation in IP addressing, switching, routing, WAN technologies and troubleshooting.",
     meta: "Networking fundamentals · Routing · Switching",
@@ -31,6 +32,7 @@ const courses = [
   },
   {
     code: "AZ",
+    path: "/courses/azure-cloud" as const,
     title: "Microsoft Azure Cloud",
     description: "Learn cloud computing, Azure Portal, virtual machines, storage, networking and application hosting.",
     meta: "Cloud computing · Infrastructure · Application hosting",
@@ -38,6 +40,7 @@ const courses = [
   },
   {
     code: "CS",
+    path: "/courses/cyber-security" as const,
     title: "Cyber Security",
     description: "Explore security fundamentals, OSINT, ethical hacking, security assessment and mobile security.",
     meta: "Ethical hacking · OSINT · Security operations",
@@ -45,6 +48,7 @@ const courses = [
   },
   {
     code: "AI",
+    path: "/courses/generative-ai" as const,
     title: "Generative AI",
     description: "Create modern AI applications with large language models, prompt engineering, Hugging Face and AI APIs.",
     meta: "LLMs · Prompt engineering · AI applications",
@@ -52,6 +56,7 @@ const courses = [
   },
   {
     code: "AG",
+    path: "/courses/ai-agents" as const,
     title: "AI Agents",
     description: "Design intelligent workflows using agentic AI, RAG, foundation models, context management and automation.",
     meta: "RAG · Agentic AI · AI workflows",
@@ -179,6 +184,7 @@ function LunaHome() {
                   <h3 className="font-display text-lg font-bold">{course.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{course.description}</p>
                   <div className="mt-5 flex items-center gap-2 border-t border-border pt-4 text-xs font-medium text-muted-foreground"><Check className="size-4 text-accent" />{course.meta}</div>
+                  <Link to={course.path} className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-accent">Explore course <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" /></Link>
                 </article>
               ))}
             </div>
