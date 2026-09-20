@@ -1,25 +1,10 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check, ChevronRight, Menu, MessageCircle, X } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 import classroomImage from "@/assets/luna-classroom.jpg";
 import { Button } from "@/components/ui/button";
-
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Luna Solutions | IT Training Institute for Networking, Azure, Cyber Security & AI" },
-      { name: "description", content: "Luna Solutions offers practical, industry-focused training in Networking, Microsoft Azure, Cyber Security, Generative AI and AI Agents." },
-      { property: "og:title", content: "Build industry-ready skills with Luna Solutions" },
-      { property: "og:description", content: "Hands-on technology training helping engineering and diploma students build confident careers." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: LunaHome,
-});
 
 const courses = [
   {
@@ -76,7 +61,7 @@ const benefits = [
 
 const careerPath = ["Student", "Training", "Projects", "Certification", "Interview prep", "Employment"];
 
-function LunaHome() {
+export function LunaHome() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -95,10 +80,10 @@ function LunaHome() {
     <div className="page-wash min-h-screen overflow-hidden text-ink">
       <div className="fixed inset-x-0 top-0 z-50 border-b border-glass-border bg-glass/75 shadow-[inset_0_1px_0_color-mix(in_oklab,white_90%,transparent)] backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
-          <Link to="/" className="flex items-center gap-2" onClick={closeMenu}>
+          <a href="/" className="flex items-center gap-2" onClick={closeMenu}>
             <span className="grid size-9 place-items-center rounded-xl bg-brand font-display text-sm font-extrabold text-brand-foreground">L</span>
             <span className="font-display text-base font-extrabold tracking-tight">Luna<span className="text-accent"> Solutions</span></span>
-          </Link>
+          </a>
 
           <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex" aria-label="Primary navigation">
             <a href="#courses" className="transition-colors hover:text-ink">Courses</a>
@@ -184,7 +169,7 @@ function LunaHome() {
                   <h3 className="font-display text-lg font-bold">{course.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{course.description}</p>
                   <div className="mt-5 flex items-center gap-2 border-t border-border pt-4 text-xs font-medium text-muted-foreground"><Check className="size-4 text-accent" />{course.meta}</div>
-                  <Link to={course.path} className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-accent">Explore course <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" /></Link>
+                  <a href={course.path} className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-accent">Explore course <ChevronRight className="size-4 transition-transform group-hover:translate-x-1" /></a>
                 </article>
               ))}
             </div>
