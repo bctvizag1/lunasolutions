@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {
@@ -54,23 +53,23 @@ export function CourseDetailPage({ course }: { course: CourseDetails }) {
     <div className="page-wash min-h-screen overflow-hidden text-ink">
       <header className="fixed inset-x-0 top-0 z-50 border-b border-glass-border bg-glass/75 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
-          <Link to="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
+          <a href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
             <span className="grid size-9 place-items-center rounded-lg bg-brand font-display text-sm font-extrabold text-brand-foreground">L</span>
             <span className="font-display text-base font-extrabold">Luna<span className="text-accent"> Solutions</span></span>
-          </Link>
+          </a>
           <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground lg:flex" aria-label="Course navigation">
-            <Link to="/" className="transition-colors hover:text-ink">Home</Link>
+            <a href="/" className="transition-colors hover:text-ink">Home</a>
             <div className="group relative">
               <span className="flex cursor-default items-center gap-1 py-5">Courses <ChevronDown className="size-4" /></span>
               <div className="invisible absolute right-0 top-full w-60 translate-y-2 rounded-lg border border-glass-border bg-background/95 p-2 opacity-0 shadow-xl backdrop-blur-xl transition-all group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                {courseLinks.map((item) => <Link key={item.to} to={item.to} className="block rounded-md px-3 py-2.5 text-sm hover:bg-secondary hover:text-ink">{item.label}</Link>)}
+                {courseLinks.map((item) => <a key={item.to} href={item.to} className="block rounded-md px-3 py-2.5 text-sm hover:bg-secondary hover:text-ink">{item.label}</a>)}
               </div>
             </div>
             <a href="#curriculum" className="transition-colors hover:text-ink">Curriculum</a>
             <a href="#project" className="transition-colors hover:text-ink">Project</a>
           </nav>
           <Button asChild size="sm" className="hidden rounded-full bg-accent px-5 font-semibold text-accent-foreground hover:bg-accent/90 sm:inline-flex">
-            <Link to="/" hash="contact">Book free counselling</Link>
+            <a href="/#contact">Book free counselling</a>
           </Button>
           <Button aria-label={menuOpen ? "Close menu" : "Open menu"} variant="ghost" size="icon" className="sm:hidden" onClick={() => setMenuOpen((open) => !open)}>
             {menuOpen ? <X /> : <Menu />}
@@ -78,8 +77,8 @@ export function CourseDetailPage({ course }: { course: CourseDetails }) {
         </div>
         {menuOpen && (
           <nav className="glass-panel mx-4 mb-4 grid gap-1 rounded-lg p-3 sm:hidden" aria-label="Mobile course navigation">
-            <Link to="/" className="rounded-md px-3 py-2 text-sm font-semibold" onClick={() => setMenuOpen(false)}>Home</Link>
-            {courseLinks.map((item) => <Link key={item.to} to={item.to} className="rounded-md px-3 py-2 text-sm font-semibold text-muted-foreground hover:bg-secondary" onClick={() => setMenuOpen(false)}>{item.label}</Link>)}
+            <a href="/" className="rounded-md px-3 py-2 text-sm font-semibold" onClick={() => setMenuOpen(false)}>Home</a>
+            {courseLinks.map((item) => <a key={item.to} href={item.to} className="rounded-md px-3 py-2 text-sm font-semibold text-muted-foreground hover:bg-secondary" onClick={() => setMenuOpen(false)}>{item.label}</a>)}
           </nav>
         )}
       </header>
@@ -87,9 +86,9 @@ export function CourseDetailPage({ course }: { course: CourseDetails }) {
       <main>
         <section className="px-5 pb-20 pt-28 sm:px-6 lg:pb-24 lg:pt-32">
           <div className="mx-auto max-w-7xl">
-            <Link to="/" hash="courses" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-accent">
+            <a href="/#courses" className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-accent">
               <ArrowLeft className="size-4" /> All programmes
-            </Link>
+            </a>
             <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
               <div className="lg:col-span-6" data-aos="fade-up">
                 <div className="mb-5 flex items-center gap-3">
@@ -101,7 +100,7 @@ export function CourseDetailPage({ course }: { course: CourseDetails }) {
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{course.overview}</p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Button asChild size="lg" className="rounded-full bg-brand px-6 font-semibold text-brand-foreground hover:bg-brand/90">
-                    <Link to="/" hash="contact">Book free counselling <ArrowRight /></Link>
+                    <a href="/#contact">Book free counselling <ArrowRight /></a>
                   </Button>
                   <Button asChild size="lg" variant="outline" className="glass-panel rounded-full border-glass-border px-6 font-semibold text-ink">
                     <a href="#curriculum">View curriculum</a>
@@ -180,7 +179,7 @@ export function CourseDetailPage({ course }: { course: CourseDetails }) {
             <h2 className="font-display text-3xl font-extrabold">Ready to start {course.title}?</h2>
             <p className="mt-3 text-muted-foreground">Talk to a counsellor about your goals and find the right learning path.</p>
             <Button asChild size="lg" className="mt-7 rounded-full bg-accent px-7 font-semibold text-accent-foreground hover:bg-accent/90">
-              <Link to="/" hash="contact">Request free counselling <ArrowRight /></Link>
+              <a href="/#contact">Request free counselling <ArrowRight /></a>
             </Button>
           </div>
         </section>
@@ -188,15 +187,15 @@ export function CourseDetailPage({ course }: { course: CourseDetails }) {
 
       <footer className="border-t border-glass-border px-5 py-8 sm:px-6">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-muted-foreground sm:flex-row">
-          <Link to="/" className="font-display font-extrabold text-ink">Luna<span className="text-accent"> Solutions</span></Link>
+          <a href="/" className="font-display font-extrabold text-ink">Luna<span className="text-accent"> Solutions</span></a>
           <p>Practical training for the careers shaping tomorrow.</p>
-          <Link to="/" hash="courses" className="font-semibold text-accent">Explore all courses</Link>
+          <a href="/#courses" className="font-semibold text-accent">Explore all courses</a>
         </div>
       </footer>
 
-      <Link to="/" hash="contact" aria-label="Start an enquiry" title="Start an enquiry" className="fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-accent text-accent-foreground shadow-2xl shadow-accent/35 transition-transform hover:scale-105">
+      <a href="/#contact" aria-label="Start an enquiry" title="Start an enquiry" className="fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-accent text-accent-foreground shadow-2xl shadow-accent/35 transition-transform hover:scale-105">
         <MessageCircle className="size-6" />
-      </Link>
+      </a>
     </div>
   );
 }
