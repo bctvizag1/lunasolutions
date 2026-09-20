@@ -53,7 +53,10 @@ function normalizedPath(pathname: string) {
 }
 
 function updatePageMeta(path: string) {
-  const metadata = pageMeta[path] ?? pageMeta["/"];
+  const metadata = pageMeta[path] ?? pageMeta["/"] ?? {
+    title: "Luna Solutions | IT Training Institute",
+    description: "Practical technology training from Luna Solutions.",
+  };
   document.title = metadata.title;
   document.querySelector('meta[name="description"]')?.setAttribute("content", metadata.description);
 }
