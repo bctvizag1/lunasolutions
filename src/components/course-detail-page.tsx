@@ -67,6 +67,7 @@ export function CourseDetailPage({ course }: { course: CourseDetails }) {
             </div>
             <a href="#curriculum" className="transition-colors hover:text-ink">Curriculum</a>
             <a href="#project" className="transition-colors hover:text-ink">Project</a>
+            <a href="/contact" className="transition-colors hover:text-ink">Contact</a>
           </nav>
           <Button asChild size="sm" className="hidden rounded-full bg-accent px-5 font-semibold text-accent-foreground hover:bg-accent/90 sm:inline-flex">
             <a href="/#contact">Book free counselling</a>
@@ -79,6 +80,7 @@ export function CourseDetailPage({ course }: { course: CourseDetails }) {
           <nav className="glass-panel mx-4 mb-4 grid gap-1 rounded-lg p-3 sm:hidden" aria-label="Mobile course navigation">
             <a href="/" className="rounded-md px-3 py-2 text-sm font-semibold" onClick={() => setMenuOpen(false)}>Home</a>
             {courseLinks.map((item) => <a key={item.to} href={item.to} className="rounded-md px-3 py-2 text-sm font-semibold text-muted-foreground hover:bg-secondary" onClick={() => setMenuOpen(false)}>{item.label}</a>)}
+            <a href="/contact" className="rounded-md px-3 py-2 text-sm font-semibold text-muted-foreground hover:bg-secondary" onClick={() => setMenuOpen(false)}>Contact</a>
           </nav>
         )}
       </header>
