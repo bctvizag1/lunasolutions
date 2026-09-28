@@ -2,6 +2,7 @@ import { StrictMode, useEffect, useState } from "react";
 import { createRoot } from "react-dom/client";
 
 import { CourseDetailPage } from "@/components/course-detail-page";
+import { ContactPage } from "@/routes/contact";
 import {
   aiAgentsCourse,
   azureCourse,
@@ -24,6 +25,10 @@ const pageMeta: Record<string, { title: string; description: string }> = {
   "/": {
     title: "Luna Solutions | IT Training Institute for Networking, Azure, Cyber Security & AI",
     description: "Luna Solutions offers practical, industry-focused training in Networking, Microsoft Azure, Cyber Security, Generative AI and AI Agents.",
+  },
+  "/contact": {
+    title: "Contact Luna Solutions | Free Course Counselling",
+    description: "Contact Luna Solutions to discuss Networking, Azure Cloud, Cyber Security, Generative AI or AI Agents training and request free course counselling.",
   },
   "/courses/networking-ccna": {
     title: "Networking & CCNA Course | Luna Solutions",
@@ -59,6 +64,8 @@ function updatePageMeta(path: string) {
   };
   document.title = metadata.title;
   document.querySelector('meta[name="description"]')?.setAttribute("content", metadata.description);
+  document.querySelector('meta[property="og:title"]')?.setAttribute("content", metadata.title);
+  document.querySelector('meta[property="og:description"]')?.setAttribute("content", metadata.description);
 }
 
 function App() {
@@ -77,6 +84,7 @@ function App() {
   const course = pages[path as keyof typeof pages];
   if (course) return <CourseDetailPage course={course} />;
   if (path === "/") return <LunaHome />;
+  if (path === "/contact") return <ContactPage />;
 
   return (
     <main className="grid min-h-screen place-items-center bg-background px-6 text-center text-foreground">
