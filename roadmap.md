@@ -1,5 +1,4 @@
-# Tasks
+# Roadmap
 
-- [x] Keep the counselling form on the main page and add a separate contact page.
-- [x] Add separate phone and WhatsApp number fields to both forms.
-- [x] Verify navigation, form interactions, and desktop/mobile layout.
+- [x] Contact form saves enquiries to Lovable Cloud (counselling_enquiries table)
+- [ ] Optional: email notification to the Luna Solutions team when a new enquiry arrives
