@@ -14,7 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      counselling_enquiries: {
+        Row: {
+          course: string | null
+          created_at: string
+          email: string
+          id: string
+          name: string
+          phone: string
+          qualification: string | null
+          whatsapp: string | null
+        }
+        Insert: {
+          course?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          name: string
+          phone: string
+          qualification?: string | null
+          whatsapp?: string | null
+        }
+        Update: {
+          course?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string
+          phone?: string
+          qualification?: string | null
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
