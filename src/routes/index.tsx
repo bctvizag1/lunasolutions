@@ -1,9 +1,10 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Check, ChevronRight, Menu, MessageCircle, X } from "lucide-react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 import classroomImage from "@/assets/luna-classroom.jpg";
+import { ContactForm } from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
 
 const courses = [
@@ -63,16 +64,10 @@ const careerPath = ["Student", "Training", "Projects", "Certification", "Intervi
 
 export function LunaHome() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     AOS.init({ duration: 700, easing: "ease-out-cubic", once: true, offset: 70 });
   }, []);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitted(true);
-  };
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -89,7 +84,7 @@ export function LunaHome() {
             <a href="#courses" className="transition-colors hover:text-ink">Courses</a>
             <a href="#pathways" className="transition-colors hover:text-ink">Pathways</a>
             <a href="#stories" className="transition-colors hover:text-ink">Stories</a>
-            <a href="#contact" className="transition-colors hover:text-ink">Contact</a>
+            <a href="/contact" className="transition-colors hover:text-ink">Contact</a>
           </nav>
 
           <Button asChild size="sm" className="hidden rounded-full bg-accent px-5 font-semibold text-accent-foreground shadow-lg shadow-accent/25 hover:bg-accent/90 md:inline-flex">
@@ -105,7 +100,7 @@ export function LunaHome() {
               ["Courses", "#courses"],
               ["Pathways", "#pathways"],
               ["Stories", "#stories"],
-              ["Contact", "#contact"],
+              ["Contact", "/contact"],
             ].map(([label, href]) => (
               <a key={href} href={href} onClick={closeMenu} className="rounded-xl px-3 py-2 text-sm font-semibold text-muted-foreground hover:bg-secondary hover:text-ink">{label}</a>
             ))}
@@ -219,38 +214,18 @@ export function LunaHome() {
           </div>
         </section>
 
-        <section id="contact" className="scroll-mt-24 px-5 py-20 sm:px-6" aria-labelledby="contact-heading">
-          <div className="glass-panel mx-auto max-w-3xl rounded-3xl p-7 text-center sm:p-10" data-aos="zoom-in">
-            {submitted ? (
-              <div className="py-8"><div className="mx-auto grid size-14 place-items-center rounded-full bg-accent/15 text-accent"><Check /></div><h2 className="mt-5 font-display text-3xl font-extrabold">Thanks — we’ll be in touch.</h2><p className="mt-3 text-muted-foreground">Your counselling request has been noted. Our team will help map the right track for you.</p></div>
-            ) : (
-              <>
-                <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">Start with a conversation</p>
-                <h2 id="contact-heading" className="mt-2 font-display text-3xl font-extrabold tracking-tight">Not sure where to start?</h2>
-                <p className="mt-3 text-muted-foreground">Book a free counselling session and we’ll map the right pathway for your goals.</p>
-                <form className="mt-8 grid gap-3 text-left sm:grid-cols-2" onSubmit={handleSubmit}>
-                  <label className="text-sm font-semibold">Full name<input required name="name" className="mt-1.5 w-full rounded-xl border border-glass-border bg-background/80 px-4 py-3 text-sm font-normal outline-none ring-ring transition focus:ring-2" placeholder="Your name" /></label>
-                  <label className="text-sm font-semibold">Mobile number<input required name="phone" className="mt-1.5 w-full rounded-xl border border-glass-border bg-background/80 px-4 py-3 text-sm font-normal outline-none ring-ring transition focus:ring-2" placeholder="Your mobile number" /></label>
-                  <label className="text-sm font-semibold">Email address<input required type="email" name="email" className="mt-1.5 w-full rounded-xl border border-glass-border bg-background/80 px-4 py-3 text-sm font-normal outline-none ring-ring transition focus:ring-2" placeholder="you@example.com" /></label>
-                  <label className="text-sm font-semibold">Qualification<input name="qualification" className="mt-1.5 w-full rounded-xl border border-glass-border bg-background/80 px-4 py-3 text-sm font-normal outline-none ring-ring transition focus:ring-2" placeholder="Engineering, diploma, graduate..." /></label>
-                  <label className="text-sm font-semibold sm:col-span-2">Course interested in<select name="course" className="mt-1.5 w-full rounded-xl border border-glass-border bg-background/80 px-4 py-3 text-sm font-normal outline-none ring-ring transition focus:ring-2"><option>Networking & CCNA</option><option>Microsoft Azure Cloud</option><option>Cyber Security</option><option>Generative AI</option><option>AI Agents</option></select></label>
-                  <Button type="submit" size="lg" className="mt-2 rounded-xl bg-accent font-semibold text-accent-foreground shadow-lg shadow-accent/25 hover:bg-accent/90 sm:col-span-2">Request free counselling <ArrowRight /></Button>
-                </form>
-              </>
-            )}
-          </div>
-        </section>
+        <div className="px-5 py-20 sm:px-6"><ContactForm id="contact" /></div>
       </main>
 
       <footer className="border-t border-glass-border px-5 py-10 sm:px-6">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-muted-foreground md:flex-row">
           <div className="font-display font-extrabold text-ink">Luna<span className="text-accent"> Solutions</span></div>
           <p>Practical training for the careers shaping tomorrow.</p>
-          <a href="#contact" className="font-semibold text-accent hover:underline">Contact admissions</a>
+          <a href="/contact" className="font-semibold text-accent hover:underline">Contact admissions</a>
         </div>
       </footer>
 
-      <a href="#contact" aria-label="Start a WhatsApp enquiry" title="Start a WhatsApp enquiry" className="fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-accent text-accent-foreground shadow-2xl shadow-accent/35 transition-transform hover:scale-105">
+      <a href="#contact" aria-label="Start an enquiry" title="Start an enquiry" className="fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-accent text-accent-foreground shadow-2xl shadow-accent/35 transition-transform hover:scale-105">
         <MessageCircle className="size-6" />
       </a>
     </div>

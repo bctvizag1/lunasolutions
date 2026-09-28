@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Reuse the shared contact form on the home and contact pages so enquiry fields remain consistent; no submission transport exists, so never imply enquiries are delivered.
