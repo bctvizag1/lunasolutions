@@ -2,7 +2,6 @@ import { useState, type FormEvent } from "react";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { supabase } from "@/integrations/supabase/client";
 
 const inputClass =
   "mt-1.5 w-full rounded-xl border border-glass-border bg-background/80 px-4 py-3 text-sm font-normal outline-none ring-ring transition focus:ring-2";
@@ -16,21 +15,30 @@ export function ContactForm({ id }: { id?: string }) {
     const data = new FormData(form);
 
     setStatus("submitting");
-    const { error } = await supabase.from("counselling_enquiries").insert({
-      name: String(data.get("name") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      whatsapp: String(data.get("whatsapp") ?? "") || null,
-      email: String(data.get("email") ?? ""),
-      qualification: String(data.get("qualification") ?? "") || null,
-      course: String(data.get("course") ?? "") || null,
-    });
+    try {
+      const response = await fetch(`${import.meta.env.BASE_URL}api/counselling.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: String(data.get("name") ?? ""),
+          phone: String(data.get("phone") ?? ""),
+          whatsapp: String(data.get("whatsapp") ?? ""),
+          email: String(data.get("email") ?? ""),
+          qualification: String(data.get("qualification") ?? ""),
+          course: String(data.get("course") ?? ""),
+        }),
+      });
 
-    if (error) {
+      if (!response.ok) {
+        setStatus("error");
+        return;
+      }
+
+      form.reset();
+      setStatus("submitted");
+    } catch {
       setStatus("error");
-      return;
     }
-    form.reset();
-    setStatus("submitted");
   };
 
   return (
