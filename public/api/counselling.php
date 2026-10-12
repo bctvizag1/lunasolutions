@@ -134,6 +134,15 @@ if (!is_array($config)) {
     respond(503, ['error' => 'Enquiry service is not configured yet.']);
 }
 
+$method = strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET');
+if (!in_array($method, ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'], true)) {
+    header('Allow: GET, POST, PATCH, PUT, DELETE');
+    respond(405, ['error' => 'Method not allowed.']);
+}
+if ($method !== 'POST') {
+    require_admin($config);
+}
+
 try {
     $dsn = sprintf(
         'mysql:host=%s;port=%d;dbname=%s;charset=utf8mb4',
@@ -146,8 +155,6 @@ try {
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES => false,
     ]);
-
-    $method = strtoupper($_SERVER['REQUEST_METHOD'] ?? 'GET');
 
     if ($method === 'POST') {
         $fields = validated_fields(read_json_body());
@@ -168,8 +175,6 @@ try {
     }
 
     if ($method === 'GET') {
-        require_admin($config);
-
         if (array_key_exists('id', $_GET)) {
             $statement = $pdo->prepare('SELECT id, name, phone, whatsapp, email, qualification, course, created_at FROM counselling_enquiries WHERE id = :id');
             $statement->execute(['id' => enquiry_id()]);
@@ -192,7 +197,6 @@ try {
     }
 
     if ($method === 'PATCH' || $method === 'PUT') {
-        require_admin($config);
         $fields = validated_fields(read_json_body(), $method === 'PATCH');
         if ($fields === []) {
             respond(400, ['error' => 'Provide at least one field to update.']);
@@ -218,7 +222,6 @@ try {
     }
 
     if ($method === 'DELETE') {
-        require_admin($config);
         $statement = $pdo->prepare('DELETE FROM counselling_enquiries WHERE id = :id');
         $statement->execute(['id' => enquiry_id()]);
         if ($statement->rowCount() === 0) {
@@ -227,8 +230,6 @@ try {
         respond(200, ['message' => 'Enquiry deleted.']);
     }
 
-    header('Allow: GET, POST, PATCH, PUT, DELETE');
-    respond(405, ['error' => 'Method not allowed.']);
 } catch (PDOException $error) {
     error_log('Counselling API database error: ' . $error->getMessage());
     respond(500, ['error' => 'The enquiry could not be processed. Please try again.']);
