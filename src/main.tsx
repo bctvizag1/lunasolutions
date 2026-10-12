@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 
 import { CourseDetailPage } from "@/components/course-detail-page";
 import { ContactPage } from "@/routes/contact";
+import { CounsellingAdminPage } from "@/routes/admin-counselling";
 import {
   aiAgentsCourse,
   azureCourse,
@@ -29,6 +30,10 @@ const pageMeta: Record<string, { title: string; description: string }> = {
   "/contact": {
     title: "Contact Luna Solutions | Free Course Counselling",
     description: "Contact Luna Solutions to discuss Networking, Azure Cloud, Cyber Security, Generative AI or AI Agents training and request free course counselling.",
+  },
+  "/admin/counselling": {
+    title: "Counselling Enquiries | Luna Solutions",
+    description: "Securely manage counselling enquiries for Luna Solutions.",
   },
   "/courses/networking-ccna": {
     title: "Networking & CCNA Course | Luna Solutions",
@@ -85,6 +90,7 @@ function App() {
   if (course) return <CourseDetailPage course={course} />;
   if (path === "/") return <LunaHome />;
   if (path === "/contact") return <ContactPage />;
+  if (path === "/admin/counselling") return <CounsellingAdminPage />;
 
   return (
     <main className="grid min-h-screen place-items-center bg-background px-6 text-center text-foreground">
