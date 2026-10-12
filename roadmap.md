@@ -4,4 +4,5 @@
 - [x] Add MySQL table SQL and authenticated PHP create, read, update, and delete operations.
 - [x] Document Linux hosting setup and keep database configuration outside the public web root.
 - [ ] Upload to PHP/MySQL hosting, add real database/admin credentials, and verify a live enquiry (requires the hosting account).
+- [ ] Add a token-protected counselling enquiries management page for create, list, edit, and delete.
 - [ ] Optional: email notification to the Luna Solutions team when a new enquiry arrives.
