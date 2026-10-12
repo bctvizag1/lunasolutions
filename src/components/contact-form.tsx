@@ -29,7 +29,14 @@ export function ContactForm({ id }: { id?: string }) {
         }),
       });
 
-      if (!response.ok) {
+      const result: unknown = await response.json().catch(() => null);
+      if (
+        !response.ok ||
+        typeof result !== "object" ||
+        result === null ||
+        !("id" in result) ||
+        typeof result.id !== "number"
+      ) {
         setStatus("error");
         return;
       }
