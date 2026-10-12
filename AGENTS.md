@@ -11,3 +11,4 @@
 
 - Reuse the shared contact form on the home and contact pages; submit enquiries to the same-origin PHP API and confirm success only after the API saves them.
 - Keep MySQL credentials and the CRUD administrator token outside the public website directory; only POST creation is public, and every read, update, and delete operation must be administrator-authenticated.
+- Keep the enquiry-management page at `/admin/counselling`, without public navigation links; hold its administrator token in page memory only and send it to the PHP API for protected actions.
