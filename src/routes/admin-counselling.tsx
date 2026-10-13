@@ -189,13 +189,8 @@ export function CounsellingAdminPage() {
 
       const wasEditing = editingId !== null;
       closeForm();
-      if (wasEditing) {
-        setMessage("Enquiry updated.");
-        await loadEnquiries();
-      } else {
-        setMessage("Enquiry added.");
-        await loadEnquiries();
-      }
+      const refreshed = await loadEnquiries();
+      if (refreshed) setMessage(wasEditing ? "Enquiry updated." : "Enquiry added.");
     } catch {
       setError("Could not reach the enquiry service. Nothing has been confirmed as saved.");
     } finally {
