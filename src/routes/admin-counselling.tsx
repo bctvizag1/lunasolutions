@@ -41,7 +41,7 @@ const blankFields: EnquiryFields = {
   whatsapp: "",
   email: "",
   qualification: "",
-  course: courses[0],
+  course: courses[0] ?? "Networking & CCNA",
 };
 
 async function readResponse(response: Response): Promise<ApiResult> {
