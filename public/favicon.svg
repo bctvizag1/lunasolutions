@@ -1,5 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Luna Solutions">
-  <rect width="64" height="64" rx="16" fill="#10294d"/>
-  <path d="M20 14v36h25" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="45" cy="16" r="6" fill="#ff6a2c"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <!-- Background Container -->
+  <rect width="512" height="512" rx="115" ry="115" fill="#0D2340"/>
+
+  <!-- Brand Elements -->
+  <g fill="none" stroke-linecap="round">
+    <!-- Letter L -->
+    <path 
+      d="M 125 90 V 380 Q 125 415 160 415 H 255" 
+      stroke="#FFFFFF" 
+      stroke-width="56" 
+      stroke-linejoin="round"
+    />
+
+    <!-- Letter S -->
+    <path 
+      d="M 405 245 
+         C 375 205, 290 205, 290 265 
+         C 290 325, 415 315, 415 375 
+         C 415 425, 340 435, 295 405" 
+      stroke="#FFFFFF" 
+      stroke-width="54" 
+      stroke-linejoin="round"
+    />
+
+    <!-- Accent Dot -->
+    <circle cx="365" cy="140" r="48" fill="#F45D22" stroke="none"/>
+  </g>
 </svg>

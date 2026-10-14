@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import classroomImage from "@/assets/luna-classroom.jpg";
+import logo from "@/assets/logo.svg";
 import { ContactForm } from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
 
@@ -76,7 +77,7 @@ export function LunaHome() {
       <div className="fixed inset-x-0 top-0 z-50 border-b border-glass-border bg-glass/75 shadow-[inset_0_1px_0_color-mix(in_oklab,white_90%,transparent)] backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
           <a href="/" className="flex items-center gap-2" onClick={closeMenu}>
-            <span className="grid size-9 place-items-center rounded-xl bg-brand font-display text-sm font-extrabold text-brand-foreground">L</span>
+            <img src={logo} alt="Luna Solutions logo" className="size-9 rounded-xl object-cover" />
             <span className="font-display text-base font-extrabold tracking-tight">Luna<span className="text-accent"> Solutions</span></span>
           </a>
 
