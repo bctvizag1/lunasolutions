@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 
+import emblem from "@/assets/luna-emblem.png.asset.json";
 import { Button } from "@/components/ui/button";
 
 export type CourseDetails = {
@@ -54,7 +55,7 @@ export function CourseDetailPage({ course }: { course: CourseDetails }) {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-glass-border bg-glass/75 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
           <a href="/" className="flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-            <span className="grid size-9 place-items-center rounded-lg bg-brand font-display text-sm font-extrabold text-brand-foreground">L</span>
+            <img src={emblem.url} alt="Luna Solutions logo" className="size-9 rounded-lg object-contain" />
             <span className="font-display text-base font-extrabold">Luna<span className="text-accent"> Solutions</span></span>
           </a>
           <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground lg:flex" aria-label="Course navigation">
