@@ -3,6 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Menu, X } from "lucide-react";
 
+import emblem from "@/assets/luna-emblem.png.asset.json";
 import { ContactForm } from "@/components/contact-form";
 import { Button } from "@/components/ui/button";
 
@@ -19,7 +20,7 @@ export function ContactPage() {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-glass-border bg-glass/75 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6">
           <a href="/" className="flex items-center gap-2">
-            <span className="grid size-9 place-items-center rounded-xl bg-brand font-display text-sm font-extrabold text-brand-foreground">L</span>
+            <img src={emblem.url} alt="Luna Solutions logo" className="size-9 rounded-xl object-contain" />
             <span className="font-display text-base font-extrabold">Luna<span className="text-accent"> Solutions</span></span>
           </a>
           <nav className="hidden items-center gap-8 text-sm font-medium text-muted-foreground md:flex" aria-label="Primary navigation">
